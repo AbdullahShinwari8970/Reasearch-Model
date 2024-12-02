@@ -1,5 +1,9 @@
 package org.example;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class MLP {
@@ -135,8 +139,10 @@ public class MLP {
         // Initialize the MLP with 2 inputs, 3 hidden units, and 1 output
         MLP mlp = new MLP(2, 3, 1);
 
+        List<Double> errors = new ArrayList<>();
+
         double learningRate = 0.1;
-        int maxEpochs = 10000;
+        int maxEpochs = 100000;
 
         // Training loop
         for (int epoch = 0; epoch < maxEpochs; epoch++) {
@@ -146,6 +152,7 @@ public class MLP {
                 totalError += mlp.backward(inputs[i], targets[i]);
             }
             mlp.updateWeights(learningRate);
+            errors.add(totalError);
 
             // Print error every 1000 epochs
             if (epoch % 1000 == 0) {
@@ -153,11 +160,26 @@ public class MLP {
             }
         }
 
+        // Save errors to file
+        saveErrorsToFile(errors, "errors.csv");
+
         // Test the trained MLP
         System.out.println("\nTesting:");
         for (int i = 0; i < inputs.length; i++) {
             double[] output = mlp.forward(inputs[i]);
             System.out.printf("Input: [%f, %f], Predicted Output: %.3f%n", inputs[i][0], inputs[i][1], output[0]);
+        }
+    }
+
+    public static void saveErrorsToFile(List<Double> errors, String filename) {
+        try (FileWriter writer = new FileWriter(filename)) {
+            writer.write("Epoch,Error\n");
+            for (int epoch = 0; epoch < errors.size(); epoch++) {
+                writer.write(epoch + "," + errors.get(epoch) + "\n");
+            }
+            System.out.println("Errors saved to " + filename);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

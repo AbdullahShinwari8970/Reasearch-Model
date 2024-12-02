@@ -45,8 +45,8 @@ public class MLPTest {
         }
 
         //To Test W1 and W2 values are within the range [-0.1, 0.1]
-        assertTrue(w1WithinRange, "values in W1 should be within the range [-0.1, 0.1].");
-        assertTrue(w2WithinRange, "values in W2 should be within the range [-0.1, 0.1].");
+        assertTrue(w1WithinRange);
+        assertTrue(w2WithinRange);
     }
 
     @Test

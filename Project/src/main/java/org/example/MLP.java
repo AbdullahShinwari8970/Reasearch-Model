@@ -78,7 +78,7 @@ public class MLP {
         double[] outputError = new double[NO];
         double[] hiddenError = new double[NH];
 
-        // Compute output layer error
+        //Compute output layer error
         for (int k = 0; k < NO; k++) {
             outputError[k] = (O[k] - targets[k]) * O[k] * (1 - O[k]); // Derivative of sigmoid
         }
@@ -106,7 +106,7 @@ public class MLP {
             }
         }
 
-        // Compute total error
+        //Compute total error
         double totalError = 0;
         for (int k = 0; k < NO; k++) {
             totalError += Math.pow(O[k] - targets[k], 2);
@@ -142,7 +142,7 @@ public class MLP {
         List<Double> errors = new ArrayList<>();
 
         double learningRate = 0.1;
-        int maxEpochs = 100000;
+        int maxEpochs = 20;
 
         // Training loop
         for (int epoch = 0; epoch < maxEpochs; epoch++) {
@@ -154,16 +154,16 @@ public class MLP {
             mlp.updateWeights(learningRate);
             errors.add(totalError);
 
-            // Print error every 1000 epochs
+            //Print error every 1000 epochs
             if (epoch % 1000 == 0) {
                 System.out.println("Epoch " + epoch + ", Total Error: " + totalError);
             }
         }
 
-        // Save errors to file
+        //Save errors to file
         saveErrorsToFile(errors, "errors.csv");
 
-        // Test the trained MLP
+        //Test the trained MLP
         System.out.println("\nTesting:");
         for (int i = 0; i < inputs.length; i++) {
             double[] output = mlp.forward(inputs[i]);

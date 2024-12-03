@@ -136,13 +136,13 @@ public class MLP {
         double[][] inputs = { {0, 0}, {0, 1}, {1, 0}, {1, 1} };
         double[][] targets = { {0}, {1}, {1}, {0} };
 
-        // Initialize the MLP with 2 inputs, 3 hidden units, and 1 output
-        MLP mlp = new MLP(2, 3, 1);
+        MLP mlp = new MLP(2, 1, 1);
 
         List<Double> errors = new ArrayList<>();
+        //List<String> differences = new ArrayList<>();
 
-        double learningRate = 0.1;
-        int maxEpochs = 20;
+        double learningRate = 0.9;
+        int maxEpochs = 100000;
 
         // Training loop
         for (int epoch = 0; epoch < maxEpochs; epoch++) {

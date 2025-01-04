@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class MLPTest {
     @Test
     void testWeightInitializationDimensions() {
-
         MLP mlp = new MLP(2, 3, 1);
 
         Assertions.assertEquals(2, mlp.W1.length); //Number of Rows for W1 = 2
@@ -23,7 +22,6 @@ public class MLPTest {
     void testWeightInitializationSmallValues() {
         MLP mlp = new MLP(2, 3, 1);
 
-        // When: W1 and W2 values are checked
         boolean w1WithinRange = true;
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 3; j++) {
@@ -53,7 +51,6 @@ public class MLPTest {
     void testWeightChangeInitializationToZero() {
         MLP mlp = new MLP(2, 3, 1);
 
-        // When: dW1 and dW2 are checked for zeros
         boolean dW1AllZero = true;
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 3; j++) {

@@ -3,6 +3,7 @@ package org.example;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -70,6 +71,16 @@ public class MLP {
             }
             O[k] = 1 / (1 + Math.exp(-Z2[k])); //Activation function is sigmoidal (CHANGE HERE)
         }
+
+//        System.out.println("Inputs: " + Arrays.toString(inputs));
+//        System.out.println("Weights W1: " + Arrays.deepToString(W1));
+//        System.out.println("Z1: " + Arrays.toString(Z1));
+//        System.out.println("H (tanh activation): " + Arrays.toString(H));
+//        System.out.println("Weights W2: " + Arrays.deepToString(W2));
+//        System.out.println("Z2: " + Arrays.toString(Z2));
+//        System.out.println("O (sigmoid activation): " + Arrays.toString(O));
+//        System.out.println("END OF FORWARD");
+
         return O;
     }
 

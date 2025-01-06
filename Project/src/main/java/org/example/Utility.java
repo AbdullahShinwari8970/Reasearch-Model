@@ -18,5 +18,17 @@ public class Utility {
             e.printStackTrace();
         }
     }
+
+    public static void saveEpochErrorsToFile(List<Double> epochErrors, String filename) {
+        try (FileWriter writer = new FileWriter(filename)) {
+            writer.write("Epoch,Error\n");
+            for (int epoch = 0; epoch < epochErrors.size(); epoch++) {
+                writer.write(epoch + "," + epochErrors.get(epoch) + "\n");
+            }
+            System.out.println("Epoch errors saved to " + filename);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
 

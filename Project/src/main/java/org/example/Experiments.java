@@ -17,7 +17,7 @@ public class Experiments {
             for (int j = 0; j < learningRates.length; j++) {
                 MLP mlp = new MLP(2, hiddenUnits[i], 1);
                 double error = trainAndTestXOR(mlp, learningRates[j], hiddenUnits[i], maxEpochs);
-                errors[i][j] = error; // Store error in matrix
+                errors[i][j] = error; //Stored error in matrix
             }
         }
 
@@ -65,8 +65,8 @@ public class Experiments {
 
     //New function to train and test for multiple hyperparameter combinations (learning rate, hidden units)
     public static void trainAndTestSinFunctionWithHyperparameters() {
-        double[] learningRates = {0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1}; // Different learning rates
-        int[] hiddenUnits = {10, 20, 30, 40, 50, 60}; // Different hidden unit sizes
+        double[] learningRates = {0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1};
+        int[] hiddenUnits = {10, 20, 30, 40, 50, 60};
         int maxEpochs = 1000;
 
         double[][] errors = new double[hiddenUnits.length][learningRates.length];
@@ -128,7 +128,7 @@ public class Experiments {
             epochErrors.add(totalError);
         }
 
-        Utility.saveEpochErrorsToFile(epochErrors, "sin_function_epoch_errors_lr" + learningRate + "_hu" + hiddenUnits + ".csv");
+        Utility.saveEpochErrorsToFile(epochErrors, "sin_function_epoch_errors" + learningRate + "_hu" + hiddenUnits + ".csv");
 
         //Testing the trained MLP
         double testError = 0;

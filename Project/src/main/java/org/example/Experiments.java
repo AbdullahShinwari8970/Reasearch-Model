@@ -57,7 +57,7 @@ public class Experiments {
 
     public static void main(String[] args) {
         //Running the hyperparameter tuning experiments
-        // trainAndTestWithHyperparameters(); //XOR
+        //trainAndTestWithHyperparameters(); //XOR
         //trainAndTestSinFunctionWithHyperparameters();
         moreSinExperiments();
     }
